@@ -25,12 +25,12 @@ export class AddUserPage implements OnInit {
   addUser() {
     console.log(this.addUserForm.value)
 
-    /*let newInfo = firebase.database().ref('users/').push();
+    let newInfo = firebase.database().ref('users/').push();
     newInfo.set({
       name : this.addUserForm.value.name, // some another information for user you could save it here.
       password: this.addUserForm.value.password,      // you could save the ID as field in document.
       role: 'user'
-    });*/
+    });
 
 
 

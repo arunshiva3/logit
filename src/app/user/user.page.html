@@ -1,9 +1,120 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>user</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>LogIT</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
+
+
+
+  <form [formGroup]="entryForm">
+    <!-- Date -->
+    <ion-item>
+      <!--<ion-label position="floating">Date</ion-label>-->
+      <ion-input type="text" placeholder="date" value="{{today | date: 'dd MMMM y'}}" readOnly=true formControlName="date"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <!--<ion-label position="floating">Date</ion-label>-->
+      <ion-input type="text" placeholder="date" value="{{today | date:'h:mm a'}}" readOnly=true formControlName="date"></ion-input>
+    </ion-item>
+    <!-- Token No -->
+    <ion-item>
+      <!--<ion-label position="floating">Token NO</ion-label>-->
+      <ion-input type="text" formControlName="tokenNo" placeholder="Token No"></ion-input>
+    </ion-item>
+
+            <span class="formError" *ngIf="entryForm.controls.tokenNo.hasError('pattern')  && (entryForm.controls.tokenNo.dirty)">
+                Please enter a valid token.
+            </span>
+
+    <!-- Vehicle No -->
+    <ion-item>
+      <!--<ion-label position="floating">Vehicle NO</ion-label>-->
+      <ion-input type="text" formControlName="vehicleNo" placeholder="Vehicle No"></ion-input>
+    </ion-item>
+    <!-- Transporter Name -->
+    <ion-item>
+      <ion-label >Transporter Name</ion-label><!--position="floating"-->
+      <ion-select value="select" ok-text="Okay" cancel-text="Dismiss" formControlName="transporterName">
+        <ion-select-option *ngFor="let name of transporterList" [value] = "name">{{name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <!--Location list-->
+    <ion-item>
+      <ion-label >Location From</ion-label><!--position="floating"-->
+      <ion-select value="select" ok-text="Okay" cancel-text="Dismiss" formControlName="fromLocation">
+        <ion-select-option *ngFor="let name of locationFromList" [value] = "name">{{name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label >Location To</ion-label><!--position="floating"-->
+      <ion-select value="select" ok-text="Okay" cancel-text="Dismiss" formControlName="toLocation">
+        <ion-select-option *ngFor="let name of locationToList" [value] = "name">{{name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+
+    <!-- Material -->
+    <ion-list>
+
+      <ion-list-header>
+        Material
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label>10MM</ion-label><!--slot="start"-->
+        <ion-input type="text" slot="end" formControlName="10mm"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>20MM</ion-label>
+        <ion-input type="text" slot="end" formControlName="20mm"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>40MM</ion-label>
+        <ion-input type="text" slot="end" formControlName="40mm"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Dust</ion-label>
+        <ion-input type="text" slot="end" formControlName="dust"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Sand</ion-label>
+        <ion-input type="text" slot="end" formControlName="sand"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Boulder</ion-label>
+        <ion-input type="text" slot="end" formControlName="boulder"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <!--Diesel Consumption-->
+    <ion-item>
+      <!--<ion-label position="floating">Diesel Consumption</ion-label>-->
+      <ion-input type="text" formControlName="diesel" placeholder="Diesel Consumption"></ion-input>
+    </ion-item>
+
+            <span class="formError" *ngIf="entryForm.controls.diesel.hasError('pattern')  && (entryForm.controls.diesel.dirty)">
+                Please enter a valid value.
+            </span>
+
+    <ion-item>
+      <ion-label >Diesel Bunk Location</ion-label><!--position="floating"-->
+      <ion-select value="select" ok-text="Okay" cancel-text="Dismiss" formControlName="bunkLocation">
+        <ion-select-option *ngFor="let name of locationToList" [value] = "name">{{name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-button shape="round" color="primary" expand="block" [disabled]="!entryForm.valid" (click)="saveEntry()">Save</ion-button>
+  </form>
 
 </ion-content>
