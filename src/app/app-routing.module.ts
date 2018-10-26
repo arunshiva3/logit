@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'admin', loadChildren: './admin/admin.module#AdminPageModule' },
   { path: 'user', loadChildren: './user/user.module#UserPageModule' },
+  { path: 'viewEntry/:key', loadChildren: './view-entry/view-entry.module#ViewEntryPageModule' },
 ];
 
 @NgModule({

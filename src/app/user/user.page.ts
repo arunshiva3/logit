@@ -85,6 +85,7 @@ export class UserPage implements OnInit {
     newEntry.set(this.entryForm.value).then(()=> {
       this.presentToast();
       this.entryForm.reset();
+      this.router.navigate(['/viewEntry/'+newEntry.key]);
     });
 
     /*db.push().set(values).then(()=>{
