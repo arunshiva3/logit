@@ -5,6 +5,7 @@ import { NavController, AlertController} from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { AuthService } from "../auth-service";
+import {CommonUtilsService} from "../common/common-utils.service";
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -13,11 +14,11 @@ import { AuthService } from "../auth-service";
 export class LoginPage implements OnInit {
 
   loginForm: FormGroup;
-
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, public navCtrl: NavController,
-              private alertCtrl: AlertController, private router: Router) {
+  submitted: boolean = false;
+  constructor(private formBuilder: FormBuilder, private authService: AuthService,
+              private router: Router, private commonoUtils: CommonUtilsService) {
     this.loginForm = this.formBuilder.group({
-      'name': [null, Validators.required],
+      'name': ['', Validators.required],
       'password': [null, Validators.required]
     })
   }
@@ -26,22 +27,25 @@ export class LoginPage implements OnInit {
   }
 
 
+  /**
+   * Login to check username and password
+   */
   login() {
-    this.authService.login(this.loginForm.value.name, this.loginForm.value.password).then(res => {
+    this.authService.login(this.loginForm.value.name.trim(), this.loginForm.value.password).then(res => {
       if (res) {
         if(res.role == 'admin')
           this.router.navigate(['admin']);
         else if(res.role == 'user')
           this.router.navigate(['user']);
       }
-        /*let alert = this.alertCtrl.create({
-          title: 'Login failed',
-          message: 'Please check your credentials',
-          buttons: ['OK']
-        });
-        alert.present();*/
-        /*this.router.navigate(['home']);*/
+    }).catch( err =>{
+      console.log(err);
+      this.commonoUtils.presentToast("Invalid Credentials")
     });
+    /*this.submitted = true;
+     this.authService.loginUser(this.loginForm.value.name, this.loginForm.value.password).then(res => {
+     console.log(res)
+     })*/
   }
 
 }

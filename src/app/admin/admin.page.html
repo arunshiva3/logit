@@ -10,67 +10,182 @@
 </ion-header>
 
 <ion-content padding>
-  Admin Page
-  <!--<ion-tabs>
-    <ion-tab label="Music" icon="musical-note"></ion-tab>
-    <ion-tab label="Profile" icon="person"></ion-tab>
-    <ion-tab label="people" icon="people"></ion-tab>
-  </ion-tabs>-->
-  <ion-item>Add User</ion-item>
+
+  <!--<ion-item> &lt;!&ndash; <ion-toolbar> &ndash;&gt;
+    &lt;!&ndash;<ion-icon name="people" slot="start"></ion-icon>&ndash;&gt;
+    <span class="mdi mdi-account-multiple mdi-24px"></span>
+    <ion-title>
+      Users
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="presentAlertPrompt()">&lt;!&ndash;shape="round" color="secondary" fill="solid"&ndash;&gt;
+        Add
+        <ion-icon name="add" slot="end" ></ion-icon>
+      </ion-button>
+      <ion-button>
+        View
+        <ion-icon name="eye" slot="end"></ion-icon>
+        &lt;!&ndash;<ion-icon name="list"></ion-icon>&ndash;&gt;
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+
+  <ion-item>
+    &lt;!&ndash;<ion-icon name="locate" slot="start"></ion-icon>&ndash;&gt;
+    <span class="mdi mdi-map-marker mdi-24px"></span>
+    <ion-title>
+      Locations
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="presentAlertPrompt()">&lt;!&ndash;shape="round" color="secondary" fill="solid"&ndash;&gt;
+        Add
+        <ion-icon name="add" slot="end"></ion-icon>
+      </ion-button>
+      <ion-button>
+        View
+        <ion-icon name="eye" slot="end"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+
+  <ion-item>
+    &lt;!&ndash;<ion-icon name="locate" slot="start"></ion-icon>&ndash;&gt;
+    <span class="mdi mdi-steering mdi-24px"></span>
+
+    <ion-title>
+      Transporters
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="presentAlertPrompt()">&lt;!&ndash;shape="round" color="secondary" fill="solid"&ndash;&gt;
+        Add
+        <ion-icon name="add" slot="end"></ion-icon>
+      </ion-button>
+      <ion-button>
+        View
+        <ion-icon name="eye" slot="end"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+
+  <ion-item>
+    &lt;!&ndash;<ion-icon name="locate" slot="start"></ion-icon>&ndash;&gt;
+    <span class="mdi mdi-truck mdi-24px"></span>
+
+    <ion-title>
+      Vehicles
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="presentAlertPrompt()">&lt;!&ndash;shape="round" color="secondary" fill="solid"&ndash;&gt;
+        Add
+        <ion-icon name="add" slot="end"></ion-icon>
+      </ion-button>
+      <ion-button>
+        View
+        <ion-icon name="eye" slot="end"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-item>-->
+
+  <ion-list>
+    <ion-title>
+      <span class="mdi mdi-account-multiple mdi-24px"></span>
+      Users
+    </ion-title>
+
+    <ion-item>
+      <ion-label>Add User</ion-label><!--slot="start"-->
+      <ion-button (click)="promptAddUser()" shape="round">
+        <ion-icon name="add"></ion-icon><!--slot="end"-->
+      </ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-label>View Users</ion-label><!--slot="start"-->
+      <ion-button shape="round" routerLink="/view-users">
+        <ion-icon name="eye"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-title>
+      <span class="mdi mdi-map-marker mdi-24px"></span>
+      Locations
+    </ion-title>
+
+    <ion-item>
+      <ion-label>Add Location</ion-label><!--slot="start"-->
+      <ion-button shape="round" (click)="promptAddLocation()">
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-label>View Locations</ion-label><!--slot="start"-->
+      <ion-button shape="round" routerLink="/view-locations">
+        <ion-icon name="eye"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-title>
+      <span class="mdi mdi-steering mdi-24px"></span>
+      Transporters
+    </ion-title>
+
+    <ion-item>
+      <ion-label>Add Transporter</ion-label><!--slot="start"-->
+      <ion-button shape="round" (click)="promptAddTransporter()">
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-label>View Transporters</ion-label><!--slot="start"-->
+      <ion-button shape="round" routerLink="/view-transporters">
+        <ion-icon name="eye"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-title>
+      <span class="mdi mdi-truck mdi-24px"></span>
+      Vehicles
+    </ion-title>
+
+    <ion-item>
+      <ion-label>Add Vehicle</ion-label><!--slot="start"-->
+      <ion-button shape="round" (click)="promptAddVehicle()" >
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-label>View Vehicles</ion-label><!--slot="start"-->
+      <ion-button shape="round" routerLink="/view-vehicles">
+        <ion-icon name="eye"></ion-icon>
+      </ion-button>
+    </ion-item>
+    </ion-list>
+
+  <ion-list>
+    <ion-title>
+      <!--<span class="mdi mdi-truck mdi-24px"></span>-->
+      Reports
+    </ion-title>
+
+    <ion-item>
+      <ion-label>Date</ion-label><!--slot="start"-->
+      <ion-button shape="round" (click)="promptAddVehicle()" >
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-label>View Vehicles</ion-label><!--slot="start"-->
+      <ion-button shape="round" routerLink="/view-vehicles">
+        <ion-icon name="eye"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+
 </ion-content>
 
-<!--<ion-split-pane id="splitPane" class="split-pane split-pane-ios hydrated">
-
-  <ion-menu side="start" role="complementary" class="menu-type-reveal menu-enabled menu-side-start split-pane-side hydrated">
-
-    <ion-header class="header header-ios hydrated">
-      <ion-toolbar color="secondary" class="ion-color ion-color-secondary hydrated">
-        <ion-title class="title-ios hydrated">Left Menu</ion-title>
-      </ion-toolbar>
-    </ion-header>
-
-    <ion-content class="hydrated" style="&#45;&#45;offset-top:0px; &#45;&#45;offset-bottom:0px;">
-      <ion-list class="list list-ios hydrated">
-        <ion-item class="in-list item hydrated">Open end Menu</ion-item>
-        <ion-item class="in-list item hydrated">Close Menu</ion-item>
-        <ion-item class="in-list item hydrated">Close Menu</ion-item>
-        <ion-item class="in-list item hydrated">Close Menu</ion-item>
-        <ion-item class="in-list item hydrated">Close Menu</ion-item>
-        <ion-item class="in-list item hydrated">Close Menu</ion-item>
-        <ion-item class="in-list item hydrated">Close Menu</ion-item>
-        <ion-item class="in-list item hydrated">Close Menu</ion-item>
-        <ion-item class="in-list item hydrated">Close Menu</ion-item>
-        <ion-item class="in-list item hydrated">Close Menu</ion-item>
-        <ion-item class="in-list item hydrated">Close Menu</ion-item>
-        <ion-item class="in-list item hydrated">Close Menu</ion-item>
-      </ion-list>
-    </ion-content>
-
-    <ion-footer class="footer footer-ios hydrated">
-      <ion-toolbar color="secondary" class="ion-color ion-color-secondary hydrated">
-        <ion-title class="title-ios hydrated">Footer</ion-title>
-      </ion-toolbar>
-    </ion-footer>
-
-  </ion-menu>
-
-  <div class="ion-page split-pane-main menu-content menu-content-reveal" main="" style="transform: translateX(0px);">
-
-    <ion-header class="header header-ios hydrated">
-      <ion-toolbar class="hydrated">
-
-        <ion-buttons slot="start" class="sc-ion-buttons-ios-h sc-ion-buttons-ios-s hydrated">
-          <ion-menu-button class="button hydrated"></ion-menu-button>
-        </ion-buttons>
-
-        <ion-title class="title-ios hydrated">Navigation</ion-title>
-      </ion-toolbar>
-    </ion-header>
-
-    <ion-content padding="" class="hydrated">
-      <h1>Page 1</h1>
-
-    </ion-content>
-
-  </div>
-</ion-split-pane>-->

@@ -1,9 +1,134 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>viewEntry</ion-title>
+    <ion-title>Entry</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-label>Date:</ion-label>
+      </ion-col>
+      <ion-col col-8>
+        <ion-label>{{entry.date | date: 'dd MMMM y'}}</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-label>Time:</ion-label>
+      </ion-col>
+      <ion-col col-8>
+        <ion-label>{{entry.date | date:'h:mm a'}}</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-label>Token No:</ion-label>
+      </ion-col>
+      <ion-col col-8>
+        <ion-label>{{entry.tokenNo}}</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-label>Vehicle No:</ion-label>
+      </ion-col>
+      <ion-col col-8>
+        <ion-label>{{entry.vehicleNo}}</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-label>Transporter Name:</ion-label>
+      </ion-col>
+      <ion-col col-8>
+        <ion-label>{{entry.transporterName}}</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-label>From:</ion-label>
+      </ion-col>
+      <ion-col col-8>
+        <ion-label>{{entry.fromLocation}}</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-label>To:</ion-label>
+      </ion-col>
+      <ion-col col-8>
+        <ion-label>{{entry.toLocation}}</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-list>
+
+      <ion-list-header>
+        Material
+      </ion-list-header>
+
+      <ion-item *ngIf="entry.tenMM">
+        <ion-label>10MM</ion-label><!--slot="start"-->
+        <ion-label>{{entry.tenMM}}</ion-label>
+      </ion-item>
+
+      <ion-item *ngIf="entry.twentyMM">
+        <ion-label>20MM</ion-label><!--slot="start"-->
+        <ion-label>{{entry.twentyMM}}</ion-label>
+      </ion-item>
+
+      <ion-item *ngIf="entry.fortyMM">
+        <ion-label>40MM</ion-label><!--slot="start"-->
+        <ion-label>{{entry.fortyMM}}</ion-label>
+      </ion-item>
+
+      <ion-item *ngIf="entry.dust">
+        <ion-label>Dust</ion-label><!--slot="start"-->
+        <ion-label>{{entry.dust}}</ion-label>
+      </ion-item>
+
+      <ion-item *ngIf="entry.sand">
+        <ion-label>Sand</ion-label><!--slot="start"-->
+        <ion-label>{{entry.sand}}</ion-label>
+      </ion-item>
+
+      <ion-item *ngIf="entry.boulder">
+        <ion-label>Boulder</ion-label><!--slot="start"-->
+        <ion-label>{{entry.boulder}}</ion-label>
+      </ion-item>
+
+    </ion-list>
+
+    <ion-row *ngIf="entry.diesel">
+      <ion-col>
+        <ion-label>Diesel:</ion-label>
+      </ion-col>
+      <ion-col col-8>
+        <ion-label>{{entry.diesel}}</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="entry.bunkLocation">
+      <ion-col>
+        <ion-label>Bunk Location:</ion-label>
+      </ion-col>
+      <ion-col col-8>
+        <ion-label>{{entry.bunkLocation}}</ion-label>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+
+  <!-- todo:
+  Button to close and logout-->
 
 </ion-content>

@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Manage Locations</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item-sliding #slidingItem *ngFor="let location of locations">
+      <ion-item detail lines="full" >
+        {{location.value}}
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="secondary" (click)="promptEditLocation(location, slidingItem)">EDIT</ion-item-option>
+        <ion-item-option color="danger" (click)="promptDeleteLocation(location.key,slidingItem )">DELETE</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <!--Todo-->
+  <!--<ion-infinite-scroll (ionInfinite)="loadData($event)" #infiniteScroll>
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."></ion-infinite-scroll-content>
+  </ion-infinite-scroll>-->
+</ion-content>

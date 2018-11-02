@@ -11,18 +11,16 @@
 
 <ion-content padding>
 
-
-
   <form [formGroup]="entryForm">
     <!-- Date -->
     <ion-item>
       <!--<ion-label position="floating">Date</ion-label>-->
-      <ion-input type="text" placeholder="date" value="{{today | date: 'dd MMMM y'}}" readOnly=true formControlName="date"></ion-input>
+      <ion-input type="text" placeholder="date" value="{{today | date: 'dd MMMM y'}}" readOnly=true formControlName="date"></ion-input><!--formControlName="date"-->
     </ion-item>
 
     <ion-item>
       <!--<ion-label position="floating">Date</ion-label>-->
-      <ion-input type="text" placeholder="date" value="{{today | date:'h:mm a'}}" readOnly=true formControlName="date"></ion-input>
+      <ion-input type="text" placeholder="time" value="{{today | date:'h:mm a'}}" readOnly=true></ion-input><!--formControlName="time"-->
     </ion-item>
     <!-- Token No -->
     <ion-item>
@@ -37,26 +35,29 @@
     <!-- Vehicle No -->
     <ion-item>
       <!--<ion-label position="floating">Vehicle NO</ion-label>-->
-      <ion-input type="text" formControlName="vehicleNo" placeholder="Vehicle No"></ion-input>
+      <ion-label >Vehicle</ion-label><!--position="floating"-->
+      <ion-select value="select" ok-text="Okay" cancel-text="Dismiss" formControlName="vehicleNo">
+        <ion-select-option *ngFor="let vehicle of vehiclesList" [value] = "vehicle.value">{{vehicle.value}}</ion-select-option>
+      </ion-select>
     </ion-item>
     <!-- Transporter Name -->
     <ion-item>
       <ion-label >Transporter Name</ion-label><!--position="floating"-->
       <ion-select value="select" ok-text="Okay" cancel-text="Dismiss" formControlName="transporterName">
-        <ion-select-option *ngFor="let name of transporterList" [value] = "name">{{name}}</ion-select-option>
+        <ion-select-option *ngFor="let location of transporterList" [value] = "location.value">{{location.value}}</ion-select-option>
       </ion-select>
     </ion-item>
     <!--Location list-->
     <ion-item>
       <ion-label >Location From</ion-label><!--position="floating"-->
       <ion-select value="select" ok-text="Okay" cancel-text="Dismiss" formControlName="fromLocation">
-        <ion-select-option *ngFor="let name of locationFromList" [value] = "name">{{name}}</ion-select-option>
+        <ion-select-option *ngFor="let location of locationFromList" [value] = "location.value">{{location.value}}</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label >Location To</ion-label><!--position="floating"-->
       <ion-select value="select" ok-text="Okay" cancel-text="Dismiss" formControlName="toLocation">
-        <ion-select-option *ngFor="let name of locationToList" [value] = "name">{{name}}</ion-select-option>
+        <ion-select-option *ngFor="let location of locationToList" [value] = "location.value">{{location.value}}</ion-select-option>
       </ion-select>
     </ion-item>
 
@@ -70,38 +71,38 @@
 
       <ion-item>
         <ion-label>10MM</ion-label><!--slot="start"-->
-        <ion-input type="text" slot="end" formControlName="10mm"></ion-input>
+        <ion-input type="number" slot="end" formControlName="tenMM"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label>20MM</ion-label>
-        <ion-input type="text" slot="end" formControlName="20mm"></ion-input>
+        <ion-input type="number" slot="end" formControlName="twentyMM"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label>40MM</ion-label>
-        <ion-input type="text" slot="end" formControlName="40mm"></ion-input>
+        <ion-input type="number" slot="end" formControlName="fortyMM"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label>Dust</ion-label>
-        <ion-input type="text" slot="end" formControlName="dust"></ion-input>
+        <ion-input type="number" slot="end" formControlName="dust"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label>Sand</ion-label>
-        <ion-input type="text" slot="end" formControlName="sand"></ion-input>
+        <ion-input type="number" slot="end" formControlName="sand"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>Boulder</ion-label>
-        <ion-input type="text" slot="end" formControlName="boulder"></ion-input>
+        <ion-input type="number" slot="end" formControlName="boulder"></ion-input>
       </ion-item>
     </ion-list>
 
     <!--Diesel Consumption-->
     <ion-item>
       <!--<ion-label position="floating">Diesel Consumption</ion-label>-->
-      <ion-input type="text" formControlName="diesel" placeholder="Diesel Consumption"></ion-input>
+      <ion-input type="number" formControlName="diesel" placeholder="Diesel Consumption"></ion-input>
     </ion-item>
 
             <span class="formError" *ngIf="entryForm.controls.diesel.hasError('pattern')  && (entryForm.controls.diesel.dirty)">
@@ -111,7 +112,7 @@
     <ion-item>
       <ion-label >Diesel Bunk Location</ion-label><!--position="floating"-->
       <ion-select value="select" ok-text="Okay" cancel-text="Dismiss" formControlName="bunkLocation">
-        <ion-select-option *ngFor="let name of locationToList" [value] = "name">{{name}}</ion-select-option>
+        <ion-select-option *ngFor="let location of locationToList" [value] = "location.value">{{location.value}}</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-button shape="round" color="primary" expand="block" [disabled]="!entryForm.valid" (click)="saveEntry()">Save</ion-button>
