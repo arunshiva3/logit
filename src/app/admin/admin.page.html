@@ -166,22 +166,33 @@
     </ion-item>
     </ion-list>
 
-  <ion-list>
+  <!--<ion-list>
     <ion-title>
-      <!--<span class="mdi mdi-truck mdi-24px"></span>-->
+      &lt;!&ndash;<span class="mdi mdi-truck mdi-24px"></span>&ndash;&gt;
       Reports
     </ion-title>
 
     <ion-item>
-      <ion-label>Date</ion-label><!--slot="start"-->
-      <ion-button shape="round" (click)="promptAddVehicle()" >
+      <ion-label>Date</ion-label>&lt;!&ndash;slot="start"&ndash;&gt;
+      <ion-button shape="round" (click)="promptDate()" >
         <ion-icon name="add"></ion-icon>
       </ion-button>
     </ion-item>
     <ion-item>
-      <ion-label>View Vehicles</ion-label><!--slot="start"-->
+      <ion-label>View Vehicles</ion-label>&lt;!&ndash;slot="start"&ndash;&gt;
       <ion-button shape="round" routerLink="/view-vehicles">
         <ion-icon name="eye"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>-->
+  <ion-list>
+    <!--<ion-title>
+      Reports
+    </ion-title>-->
+    <ion-item>
+      <ion-label>Reports</ion-label><!--slot="start"-->
+      <ion-button shape="round" routerLink="/reports">
+        <ion-icon name="save"></ion-icon>
       </ion-button>
     </ion-item>
   </ion-list>

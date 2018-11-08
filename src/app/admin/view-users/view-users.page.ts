@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, Renderer, ElementRef } from '@angular/core';
 import {Router} from '@angular/router';
 import { InfiniteScroll, ItemSliding } from '@ionic/angular';
 import * as firebase from 'firebase';
@@ -16,7 +16,9 @@ export class ViewUsersPage implements OnInit {
   responseArray = [];
   lastObj = {}
   stopScroll = false;
-  constructor(private alertController: AlertController, private router: Router) {
+  @ViewChild('slidingItem') slidingItem: ElementRef;
+  @ViewChild('item') item: ElementRef;
+  constructor(private alertController: AlertController, private router: Router, private renderer: Renderer) {
     this.getUsers();
   }
   ngOnInit() {}
@@ -37,11 +39,11 @@ export class ViewUsersPage implements OnInit {
     query.on('value', resp => {
       this.users = snapshotToArray(resp)
       /*this.responseArray = snapshotToArray(resp);
-      if(this.responseArray.length < 8) {
+       if(this.responseArray.length < 8) {
        this.stopScroll = true;
        }
        this.lastObj = this.responseArray.pop();
-      this.users = this.users.concat(this.responseArray);*/
+       this.users = this.users.concat(this.responseArray);*/
     });
   }
 
@@ -108,6 +110,30 @@ export class ViewUsersPage implements OnInit {
 
     await alert.present();
   }
+  open(itemSlide: ItemSliding, item: any) {
+    console.log('opening item slide..');
+    // itemSlide._setOpenAmount(100) ;
+    console.log(this.slidingItem.nativeElement)
+    /*this.renderer.setElementClass(this.slidingItem.nativeElement,'active-options-right', true);
+    this.renderer.setElementClass(this.slidingItem.nativeElement,'active-swipe-right', true);
+
+    this.renderer.setElementStyle(this.item.nativeElement,'transition', null);
+    this.renderer.setElementStyle(this.item.nativeElement,'transform', 'translate3d(-'+swipeAmount+'px, 0px, 0px)');*/
+
+    /*if(this.activeItemSliding!==null) //use this if only one active sliding item allowed
+
+     this.activeItemSliding = itemSlide;
+
+     let swipeAmount = 194; //set your required swipe amount
+
+     itemSlide.startSliding(swipeAmount);
+     itemSlide.setElementClass('active-options-right', true);
+     itemSlide.setElementClass('active-swipe-right', true);
+
+     item.setElementStyle('transition', null);
+     item.setElementStyle('transform', 'translate3d(-'+swipeAmount+'px, 0px, 0px)');*/
+  }
+
 
 
 

@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Reports</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="reportForm">
+    <ion-item>
+      <ion-label>Start Date</ion-label>
+      <ion-datetime displayFormat="DD MMMM YY" min="2017" value="{{today}}" max="2020-10-31"
+                    placeholder="Select Date" formControlName="startDate"></ion-datetime>
+    </ion-item>
+    <ion-button shape="round" color="primary" expand="block" (click)="getReport()">Submit</ion-button>
+  </form>
+</ion-content>

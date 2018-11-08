@@ -11,7 +11,7 @@
         <ion-label>Date:</ion-label>
       </ion-col>
       <ion-col col-8>
-        <ion-label>{{entry.date | date: 'dd MMMM y'}}</ion-label>
+        <ion-label>{{entry.fullDate | date: 'dd MMMM y'}}</ion-label>
       </ion-col>
     </ion-row>
 
@@ -20,7 +20,7 @@
         <ion-label>Time:</ion-label>
       </ion-col>
       <ion-col col-8>
-        <ion-label>{{entry.date | date:'h:mm a'}}</ion-label>
+        <ion-label>{{entry.fullDate | date:'h:mm a'}}</ion-label>
       </ion-col>
     </ion-row>
 

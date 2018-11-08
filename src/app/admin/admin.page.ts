@@ -96,6 +96,23 @@ export class AdminPage implements OnInit {
     await alert.present();
   }
 
+  async promptDate() {
+    const alert = await this.alertController.create({
+      header: 'Add Vehicle',
+      inputs: [
+        {name: 'date', type: 'date', placeholder: 'Date'}
+      ],
+      buttons: [
+        {text: 'Cancel',role: 'cancel',cssClass: 'secondary'},
+        {text: 'Ok',handler: (data) => {
+          console.log(data)
+        }}
+      ]
+    });
+
+    await alert.present();
+  }
+
 
   /**
    * Add a user to the firebase
@@ -128,4 +145,5 @@ export class AdminPage implements OnInit {
   logout = () => {
     this.authService.logout();
   }
+
 }

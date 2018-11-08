@@ -25,7 +25,6 @@ export class UserPage implements OnInit {
   locationFromList:any = [];
   locationToList:any = [];
   vehiclesList:any = [];
-  name: "10";
   constructor(private authService:AuthService, private formBuilder:FormBuilder, private router: Router,
               private alertController: AlertController) {
 
@@ -36,6 +35,7 @@ export class UserPage implements OnInit {
 
     this.entryForm = this.formBuilder.group({
       'date':[null],
+      'fullDate':[null],
       'tokenNo': [null, Validators.compose([Validators.pattern("^[0-9]*$"), Validators.required])],
       'vehicleNo': [null, Validators.required],
       'transporterName': [null, Validators.required],
@@ -97,7 +97,8 @@ export class UserPage implements OnInit {
    * To save a new entry to the cloud
    */
   saveEntry = () => {
-    this.entryForm.controls['date'].setValue(new Date().toISOString());
+    this.entryForm.controls['fullDate'].setValue(new Date().toISOString());
+    this.entryForm.controls['date'].setValue(new Date().toISOString().slice(0,10));
     let newEntry = firebase.database().ref('entries/').push();
     newEntry.set(this.entryForm.value).then(()=> {
       this.showMessage(newEntry.key);
