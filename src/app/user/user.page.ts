@@ -129,7 +129,7 @@ export class UserPage implements OnInit {
           text: 'Okay',
           handler: () => {
             this.entryForm.reset();
-            this.router.navigate(['/viewEntry/'+key]);
+            this.router.navigate(['/view-entry/'+key]);
           }
         }
       ]

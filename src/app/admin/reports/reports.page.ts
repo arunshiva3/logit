@@ -7,7 +7,7 @@ import * as firebase from 'firebase';
   styleUrls: ['./reports.page.scss'],
 })
 export class ReportsPage implements OnInit {
-  today: Date = new Date().toISOString().slice(0,10);
+  today: any = new Date().toISOString().slice(0,10);
   reportForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {
@@ -19,12 +19,10 @@ export class ReportsPage implements OnInit {
   }
 
   ngOnInit(){
-
   }
 
   getReport() {
     console.log(this.reportForm.value);
-
   }
 
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router  } from '@angular/router';
 import * as firebase from 'firebase';
-import {snapshotToObject} from "../common/common-utils.service";
+import {snapshotToObject} from "../../common/common-utils.service";
 @Component({
     selector: 'app-view-entry',
     templateUrl: './view-entry.page.html',
